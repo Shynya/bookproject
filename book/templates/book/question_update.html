@@ -1,0 +1,36 @@
+{% extends 'baseQuestion.html' %}
+
+{% block title %}Question修正{% endblock %}
+
+{% block content %}
+<div class="nav-item">
+{% if data|length <= 4 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+{% elif data|length <= 10 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+{% elif data|length <= 20 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+{% else %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+    <a href="{% url 'questionRandom30' %}" class="choice30">30択問題</a>
+{% endif %}
+<a class="toQichiran" href="{% url 'list-question' %}">Workbook一覧へ</a>
+<a class="toQichiran" href="{% url 'create-question' %}">Workbook登録へ</a>
+</div>
+
+<br />
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="修正する">
+    </form>
+
+    {% load static %}
+    <script src="{% static 'book/js/createQuestion.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,15 @@
+/*タイポグラフィー*/
+#wrapper{
+    /*描画されるテキストを中央寄せにする*/
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #particle{
+    width: 35%;
+    height: 18vh;
+    vertical-align: bottom;/*canvasタグ下に余白が生まれるのを防ぐ*/
+    text-align: center;
+    font-family: 'Hannotate SC','HanziPen SC','Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック','YuGothic','Yu Gothic','メイリオ', 'Meiryo','ＭＳ Ｐゴシック','MS PGothic' !important;
+  }

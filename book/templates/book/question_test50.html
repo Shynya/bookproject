@@ -1,0 +1,220 @@
+{% extends 'baseQuestion.html' %}
+{% load static %} 
+
+{% block title %}50問{% endblock %}
+
+{% block content %}
+<div class="nav-item">
+{% if object_list|length <= 4 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">4択問題</a>
+{% elif object_list|length <= 10 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+{% elif object_list|length <= 20 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+{% else %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+    <a href="{% url 'questionRandom30' %}" class="choice30">30択問題</a>
+{% endif %}
+<a class="toQichiran" href="{% url 'list-question' %}">Workbook一覧へ</a>
+<a class="toQichiran" href="{% url 'create-question' %}">Workbook登録へ</a>
+</div>
+<br />
+
+
+<div class="font_size"> <!--文字の大きさ-->
+<table>
+<th class="mondai">【問題】　{{ dataQuestion|linebreaksbr }}</th>
+<tr>
+{% if dataThumbnailQ1 %}
+<td><img src="{{ dataThumbnailQ1.url }}" class="img-thumbnail" width="160" height="160" /></td>
+{% endif %}
+{% if dataThumbnailQ2 %}
+<td><img src="{{ dataThumbnailQ2.url }}" class="img-thumbnail" width="160" height="160" /></td>
+{% endif %}
+{% if dataThumbnailQ3 %}
+<td><img src="{{ dataThumbnailQ3.url }}" class="img-thumbnail" width="160" height="160" /></td>
+{% endif %}
+</tr>
+</table>
+
+<!--ヒント1-->
+<!--折りたたみ上--> 
+<div class="wrap">
+    <!-- １つ目 -->
+    <label for="label1">▼ ヒント1</label>
+    <input type="checkbox" id="label1" class="switch" />
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content">
+<p>
+<!--折りたたみ上-->
+{% if dataHint1 %}
+{{ dataHint1}}
+{% endif %}
+
+<!--折りたたみおりたたみ下--> 
+</p>
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->
+<!--折りたたみおりたたみ下-->
+
+
+
+
+<!--ヒント2-->
+<!--折りたたみ上--> 
+    <!-- １つ目 -->
+    <label for="label2">▼ ヒント2</label>
+    <input type="checkbox" id="label2" class="switch" />
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content">
+<p>
+<!--折りたたみ上-->
+
+{% if dataHint2 %}
+{{ dataHint2 }}
+{% endif %}
+
+<!--折りたたみおりたたみ下--> 
+</p>
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->
+<!--折りたたみおりたたみ下-->
+
+<br />
+
+    <!-- １つ目 -->
+    <label for="label3">▼ 30個の選択肢を表示して解答する</label>
+    <input type="checkbox" id="label3" class="switch" />
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content">
+<p>
+
+
+<form action="{% url 'test-question50' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label><input type="radio" id="answer1tsume" name="name1" value="{{ d7_1_Answer }}" class="radio-plain" required> {{ d7_1_Answer }}　　</label>
+    <label><input type="radio" id="answer2tsume" name="name1" value="{{ d7_2_Answer }}" class="radio-plain"> {{ d7_2_Answer }}　　</label>
+    <label><input type="radio" id="answer3tsume" name="name1" value="{{ d7_3_Answer }}" class="radio-plain"> {{ d7_3_Answer }}　　</label> 
+    <label><input type="radio" id="answer4tsume" name="name1" value="{{ d7_4_Answer }}" class="radio-plain"> {{ d7_4_Answer }}　　</label>
+    <label><input type="radio" id="answer5tsume" name="name1" value="{{ d7_5_Answer }}" class="radio-plain"> {{ d7_5_Answer }}　　</label>
+    <label><input type="radio" id="answer6tsume" name="name1" value="{{ d7_6_Answer }}" class="radio-plain"> {{ d7_6_Answer }}　　</label>
+    <label><input type="radio" id="answer7tsume" name="name1" value="{{ d7_7_Answer }}" class="radio-plain"> {{ d7_7_Answer }}　　</label>
+    <label><input type="radio" id="answer8tsume" name="name1" value="{{ d7_8_Answer }}" class="radio-plain"> {{ d7_8_Answer }}　　</label>
+    <label><input type="radio" id="answer9tsume" name="name1" value="{{ d7_9_Answer }}" class="radio-plain"> {{ d7_9_Answer }}　　</label>
+    <label><input type="radio" id="answer10tsume" name="name1" value="{{ d7_10_Answer }}" class="radio-plain"> {{ d7_10_Answer }}　　</label>
+    <label><input type="radio" id="answer11tsume" name="name1" value="{{ d7_11_Answer }}" class="radio-plain"> {{ d7_11_Answer }}　　</label>
+    <label><input type="radio" id="answer12tsume" name="name1" value="{{ d7_12_Answer }}" class="radio-plain"> {{ d7_12_Answer }}　　</label>
+    <label><input type="radio" id="answer13tsume" name="name1" value="{{ d7_13_Answer }}" class="radio-plain"> {{ d7_13_Answer }}　　</label>
+    <label><input type="radio" id="answer14tsume" name="name1" value="{{ d7_14_Answer }}" class="radio-plain"> {{ d7_14_Answer }}　　</label>
+    <label><input type="radio" id="answer15tsume" name="name1" value="{{ d7_15_Answer }}" class="radio-plain"> {{ d7_15_Answer }}　　</label>
+    <label><input type="radio" id="answer16tsume" name="name1" value="{{ d7_16_Answer }}" class="radio-plain"> {{ d7_16_Answer }}　　</label>
+    <label><input type="radio" id="answer17tsume" name="name1" value="{{ d7_17_Answer }}" class="radio-plain"> {{ d7_17_Answer }}　　</label>
+    <label><input type="radio" id="answer18tsume" name="name1" value="{{ d7_18_Answer }}" class="radio-plain"> {{ d7_18_Answer }}　　</label>
+    <label><input type="radio" id="answer19tsume" name="name1" value="{{ d7_19_Answer }}" class="radio-plain"> {{ d7_19_Answer }}　　</label>
+    <label><input type="radio" id="answer20tsume" name="name1" value="{{ d7_20_Answer }}" class="radio-plain"> {{ d7_20_Answer }}　　</label>
+
+    <label><input type="radio" id="answer21tsume" name="name1" value="{{ d7_21_Answer }}" class="radio-plain"> {{ d7_21_Answer }}　　</label>
+    <label><input type="radio" id="answer22tsume" name="name1" value="{{ d7_22_Answer }}" class="radio-plain"> {{ d7_22_Answer }}　　</label>
+    <label><input type="radio" id="answer23tsume" name="name1" value="{{ d7_23_Answer }}" class="radio-plain"> {{ d7_23_Answer }}　　</label>
+    <label><input type="radio" id="answer24tsume" name="name1" value="{{ d7_24_Answer }}" class="radio-plain"> {{ d7_24_Answer }}　　</label>
+    <label><input type="radio" id="answer25tsume" name="name1" value="{{ d7_25_Answer }}" class="radio-plain"> {{ d7_25_Answer }}　　</label>
+    <label><input type="radio" id="answer26tsume" name="name1" value="{{ d7_26_Answer }}" class="radio-plain"> {{ d7_26_Answer }}　　</label>
+    <label><input type="radio" id="answer27tsume" name="name1" value="{{ d7_27_Answer }}" class="radio-plain"> {{ d7_27_Answer }}　　</label>
+    <label><input type="radio" id="answer28tsume" name="name1" value="{{ d7_28_Answer }}" class="radio-plain"> {{ d7_28_Answer }}　　</label>
+    <label><input type="radio" id="answer29tsume" name="name1" value="{{ d7_29_Answer }}" class="radio-plain"> {{ d7_29_Answer }}　　</label>
+    <label><input type="radio" id="answer30tsume" name="name1" value="{{ d7_30_Answer }}" class="radio-plain"> {{ d7_30_Answer }}　　</label>
+    
+    <br /> 
+    <br />
+    
+    <input type="hidden" id="question" name="nameQuestion" value="{{ dataQuestion }}">
+    <input type="hidden" id="rightAnswer" name="name0" value="{{ dataAnswer }}">
+    <input type="hidden" id="rightExplanation" name="nameEx" value="{{ dataExplanation }}">
+    <input type="hidden" id="rightThumbnailQ1" name="nameThuQ1" value="{{ dataThumbnailQ1 }}">
+    <input type="hidden" id="rightThumbnailQ2" name="nameThuQ2" value="{{ dataThumbnailQ2 }}">
+    <input type="hidden" id="rightThumbnailQ3" name="nameThuQ3" value="{{ dataThumbnailQ3 }}">
+    <input type="hidden" id="rightThumbnailA1" name="nameThuA1" value="{{ dataThumbnailA1 }}">
+    <input type="hidden" id="rightThumbnailA2" name="nameThuA2" value="{{ dataThumbnailA2 }}">
+    <input type="hidden" id="rightThumbnailA3" name="nameThuA3" value="{{ dataThumbnailA3 }}">
+    <input type="hidden" id="idNumtaku" name="nameNumtaku" value="30" class="numTaku">
+    <input type="hidden" id="test50" name="test50count" value="{{ test50count }}">{{ test50count }}
+    <input type="hidden" id="test50" name="test50seikai" value="{{ test50seikai }}">{{ test50seikai }}
+    <input type="hidden" id="test50" name="testShokai" value="{{ testShokai }}">
+    <input type="hidden" id="test50" name="testId" value="{{ testId }}">
+    <input type="hidden" id="test50" name="testId1" value="{{ testId1 }}">
+    <input type="hidden" id="test50" name="testId2" value="{{ testId2 }}">
+    <input type="hidden" id="test50" name="testId3" value="{{ testId3 }}">
+
+    <input type="hidden" id="test50" name="testId4" value="{{ testId4 }}">
+    <input type="hidden" id="test50" name="testId5" value="{{ testId5 }}">
+    <input type="hidden" id="test50" name="testId6" value="{{ testId6 }}">
+    <input type="hidden" id="test50" name="testId7" value="{{ testId7 }}">
+    <input type="hidden" id="test50" name="testId8" value="{{ testId8 }}">
+    <input type="hidden" id="test50" name="testId9" value="{{ testId9 }}">
+    <input type="hidden" id="test50" name="testId10" value="{{ testId10 }}">
+
+    <input type="hidden" id="test50" name="testId11" value="{{ testId11 }}">
+    <input type="hidden" id="test50" name="testId12" value="{{ testId12 }}">
+    <input type="hidden" id="test50" name="testId13" value="{{ testId13 }}">
+
+    <input type="hidden" id="test50" name="testId14" value="{{ testId14 }}">
+    <input type="hidden" id="test50" name="testId15" value="{{ testId15 }}">
+    <input type="hidden" id="test50" name="testId16" value="{{ testId16 }}">
+    <input type="hidden" id="test50" name="testId17" value="{{ testId17 }}">
+    <input type="hidden" id="test50" name="testId18" value="{{ testId18 }}">
+    <input type="hidden" id="test50" name="testId19" value="{{ testId19 }}">
+    <input type="hidden" id="test50" name="testId20" value="{{ testId20 }}">
+
+    <input type="hidden" id="test50" name="testId21" value="{{ testId21 }}">
+    <input type="hidden" id="test50" name="testId22" value="{{ testId22 }}">
+    <input type="hidden" id="test50" name="testId23" value="{{ testId23 }}">
+
+    <input type="hidden" id="test50" name="testId24" value="{{ testId24 }}">
+    <input type="hidden" id="test50" name="testId25" value="{{ testId25 }}">
+    <input type="hidden" id="test50" name="testId26" value="{{ testId26 }}">
+    <input type="hidden" id="test50" name="testId27" value="{{ testId27 }}">
+    <input type="hidden" id="test50" name="testId28" value="{{ testId28 }}">
+    <input type="hidden" id="test50" name="testId29" value="{{ testId29 }}">
+    <input type="hidden" id="test50" name="testId30" value="{{ testId30 }}">
+
+    <input type="hidden" id="test50" name="testId31" value="{{ testId31 }}">
+    <input type="hidden" id="test50" name="testId32" value="{{ testId32 }}">
+    <input type="hidden" id="test50" name="testId33" value="{{ testId33 }}">
+
+    <input type="hidden" id="test50" name="testId34" value="{{ testId34 }}">
+    <input type="hidden" id="test50" name="testId35" value="{{ testId35 }}">
+    <input type="hidden" id="test50" name="testId36" value="{{ testId36 }}">
+    <input type="hidden" id="test50" name="testId37" value="{{ testId37 }}">
+    <input type="hidden" id="test50" name="testId38" value="{{ testId38 }}">
+    <input type="hidden" id="test50" name="testId39" value="{{ testId39 }}">
+    <input type="hidden" id="test50" name="testId40" value="{{ testId40 }}">
+
+    <input type="hidden" id="test50" name="testId41" value="{{ testId41 }}">
+    <input type="hidden" id="test50" name="testId42" value="{{ testId42 }}">
+    <input type="hidden" id="test50" name="testId43" value="{{ testId43 }}">
+
+    <input type="hidden" id="test50" name="testId44" value="{{ testId44 }}">
+    <input type="hidden" id="test50" name="testId45" value="{{ testId45 }}">
+    <input type="hidden" id="test50" name="testId46" value="{{ testId46 }}">
+    <input type="hidden" id="test50" name="testId47" value="{{ testId47 }}">
+    <input type="hidden" id="test50" name="testId48" value="{{ testId48 }}">
+    <input type="hidden" id="test50" name="testId49" value="{{ testId49 }}">
+    <input type="hidden" id="test50" name="testId50" value="{{ testId50 }}">
+    
+    
+    <input class="yuruFont" type="submit" id="button" name="button" value="これで回答する">
+</form>
+
+</p>
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->
+</div>
+
+</div><!--文字の大きさ-->
+
+{% endblock content %}

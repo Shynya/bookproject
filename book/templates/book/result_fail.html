@@ -1,0 +1,117 @@
+{% extends 'baseQuestion.html' %}
+
+{% block title %}解答結果{% endblock %}
+
+{% block content %}
+
+<div class="nav-item">
+{% if object_list|length <= 4 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+{% elif object_list|length <= 10 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+{% elif object_list|length <= 20 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+{% else %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+    <a href="{% url 'questionRandom30' %}" class="choice30">30択問題</a>
+{% endif %}
+<a class="toQichiran" href="{% url 'list-question' %}">Workbook一覧へ</a>
+<a class="toQichiran" href="{% url 'create-question' %}">Workbook登録へ</a>
+</div>
+
+<br />
+<br />
+<div class="kekka"><label><h2>解答結果　　　　　<span class="fuseikai">不正解。。。</span></h2></label></div>
+<br />
+<div class="font_size"><!--文字の大きさ-->
+
+   
+   <h4 class="detailMondaiColor mondai">【問題】　{{ dataQuestion|linebreaksbr }}</h4>
+
+      {% if dataThumbnailQ1 %}
+      <img src="/media/{{ dataThumbnailQ1 }}" class="img-thumbnail" width="160" height="160" />
+      {% endif %}
+      {% if dataThumbnailQ2 %}
+      <img src="/media/{{ dataThumbnailQ2 }}" class="img-thumbnail" width="160" height="160" />
+      {% endif %}
+      {% if dataThumbnailQ3 %}
+      <img src="/media/{{ dataThumbnailQ3 }}" class="img-thumbnail" width="160" height="160" />
+      {% endif %}
+      {% if dataThumbnailQ1 or dataThumbnailQ2 or dataThumbnailQ3 %}
+      <br />
+      {% endif %}
+
+   <!--<table class="ProductTable">-->
+   <br />
+   <h6 class="detailYAColor">【あなたの答え】　{{ selectedAns }}</h6>
+
+
+
+<!--折りたたみ上--> 
+<div class="wrap">
+   <!-- １つ目 -->
+   <label for="label1">▼ 正解を表示</label>
+   <input type="checkbox" id="label1" class="switch" />
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content">
+<p>
+<!--折りたたみ上-->
+   <h2 class="detailKotaeColor">【正解】　{{ dataAnswer }}</h2>
+<!--折りたたみ下--> 
+</p>
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->
+<!--</div>-->
+<!--折りたたみ下-->
+
+
+
+
+<!--</table>-->
+
+<!--折りたたみ上--> 
+<!--<div class="wrap">-->
+   <!-- １つ目 -->
+   <label for="label2">▼ 解説を表示</label>
+   <input type="checkbox" id="label2" class="switch" />
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content">
+<p>
+<!--折りたたみ上-->
+
+      <div class="detailKaisetsuColor">【解説】　{{ dataExplanation|linebreaksbr }}</div>
+      {% if dataThumbnailA1 %}
+      <img src="/media/{{ dataThumbnailA1 }}" class="img-thumbnail" width="160" height="160" />
+      {% endif %}
+      {% if dataThumbnailA2 %}
+      <img src="/media/{{ dataThumbnailA2 }}" class="img-thumbnail" width="160" height="160" />
+      {% endif %}
+      {% if dataThumbnailA3 %}
+      <img src="/media/{{ dataThumbnailA3 }}" class="img-thumbnail" width="160" height="160" />
+      {% endif %}
+
+<!--折りたたみ下--> 
+</p>
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->
+</div>
+<!--折りたたみ下-->
+
+{% if dataNumtaku == "4" %}
+<a href="{% url 'questionRandom' %}" class="choice4">次へ ( {{ dataNumtaku }}択問題 )</a>
+{% elif dataNumtaku == "10" %}
+<a href="{% url 'questionRandom10' %}" class="choice10">次へ ( {{ dataNumtaku }}択問題 )</a>
+{% elif dataNumtaku == "20" %}
+<a href="{% url 'questionRandom20' %}" class="choice20">次へ ( {{ dataNumtaku }}択問題 )</a>
+{% elif dataNumtaku == "30" %}
+<a href="{% url 'questionRandom30' %}" class="choice30">次へ ( {{ dataNumtaku }}択問題 )</a>
+{% endif %}
+
+</div><!--文字の大きさ-->
+{% include 'book/components/pagination.html' %}
+{% endblock content %}

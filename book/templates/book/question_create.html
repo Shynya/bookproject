@@ -1,0 +1,638 @@
+{% extends 'baseQuestion.html' %}
+{% load static %}
+{% block title %}Workbook作成{% endblock %}
+
+{% block content %}
+<div class="nav-item">
+{% if data|length <= 4 %}
+    <a href="{% url 'questionRandom' %}">４択問題</a>
+{% elif data|length <= 10 %}
+    <a href="{% url 'questionRandom' %}">４択問題</a>
+    <a href="{% url 'questionRandom10' %}">10択問題</a>
+{% elif data|length <= 20 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+{% else %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+    <a href="{% url 'questionRandom30' %}" class="choice30">30択問題</a>
+{% endif %}
+<a class="toQichiran" href="{% url 'list-question' %}">Workbook一覧へ</a>
+<a class="toQichiran" href="{% url 'create-question' %}">Workbook登録へ</a>
+</div>
+
+<br />
+
+<!--5/5-->
+<form action="{% url 'create-question' %}" method="get" enctype="multipart/form-data">
+{% csrf_token %}
+
+<!--ルーティン-->
+<!--<div><h2 style="font-weight: bold;">ルーティン</h2></div>-->
+<table border="5" rules="all" class="routineFont">
+
+<tr><th rowspan="2">ROUTINE</th>
+<td>Linux</td><td colspan="3">Python3</td><td>VBA</td><td>SQL</td><td colspan="3">データ管理・分析</td><td colspan="2">情報技術者</td><td colspan="2">Deep Learning</td><td>簿記</td><td>JAVA</td>
+</tr>
+<tr><!--<th>ROUTINE</th>-->
+    
+    
+    {% if sho == "LINUC教科書LINUCレベル1スピードマスター問題集 VERSION10.0対応" or sho == "LPICレベル1スピードマスター問題集" or sho == "Linuxコマンド200本ノック" or kategory == "linux" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameLinux" value="レベル1" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameLinux" value="レベル1"></td>
+    {% endif %}
+
+    {% if sho == "Python3エンジニア認定基礎試験Web問題" or sho == "Python3エンジニア認定基礎試験問題集" or kategory == "python3" %}
+    <td><input class="yuruFont" type="submit" id="button" name="namePython3" value="基礎" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="namePython3" value="基礎"></td>
+    {% endif %}
+
+    {% if sho == 'Python3エンジニア認定データ分析試験Web問題' or kategory == "python3d" %}
+    <td><input class="yuruFont" type="submit" id="button" name="namePython3D" value="データ分析" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="namePython3D" value="データ分析"></td>
+    {% endif %}
+
+    {% if sho == 'Python3エンジニア認定実践試験Web問題' or kategory == "python3jissen" %}
+    <td><input class="yuruFont" type="submit" id="button" name="namePython3Jissen" value="実践" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="namePython3Jissen" value="実践"></td>
+    {% endif %}
+
+    {% if sho == 'Access VBA スタンダード' or sho == "【新試験対応】　VBAエキスパート試験　対策問題集　Access VBA スタンダード<1-5章>" or kategory == "accessvba" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameAccessVBA" value="Access" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameAccessVBA" value="Access"></td>
+    {% endif %}
+    
+    
+    
+    {% if sho == "Bronze 12c SQL 基礎問題集" or kategory == "sql" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameSQL" value="Bronze" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameSQL" value="Bronze"></td>
+    {% endif %}
+    
+    
+
+    {% if sho == "データベーススペシャリスト教科書令和4年度" or kategory == "dbs" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameDBS" value="DB SPECIALIST" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameDBS" value="DB SPECIALIST"></td>
+    {% endif %}
+
+    {% if sho == '統計検定2級　模擬問題集1' or sho == '統計検定2級　模擬問題集2' or sho == '統計検定2級公式問題集CBT対応板' or kategory == "toukei" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameToukei" value="統計検定" style="background-color:hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameToukei" value="統計検定"></td>
+    {% endif %}
+
+    {% if sho == "徹底攻略データサイエンティスト検定リテラシーレベル問題集" or kategory == "datascientist" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameDataScientist" value="DATA SCIENTIST" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameDataScientist" value="DATA SCIENTIST"></td>
+    {% endif %}
+
+    {% if sho == 'キタミ式ITイラスト塾　基本情報技術者　令和02年' or kategory == "kihon" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameKihon" value="基本" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameKihon" value="基本"></td>
+    {% endif %}
+
+    {% if sho == 'キタミ式ITイラスト塾　応用情報技術者　令和03年' or sho == '令和04年【春期】　応用情報技術者　過去問題集' or sho == '応用情報技術者　試験によくでる問題集【午後】' or kategory == "ouyou" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameOuyou" value="応用" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameOuyou" value="応用"></td>
+    {% endif %}
+
+    {% if sho == "ディープラーニングG検定ジェネラリスト要点整理テキスト&問題集" or kategory == "gkentei" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameG" value="G検定" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameG" value="G検定"></td>
+    {% endif %}
+
+    {% if sho == "徹底攻略ディープラーニングE資格エンジニア問題集" or kategory == "eshikaku" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameEshikaku" value="E資格" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameEshikaku" value="E資格"></td>
+    {% endif %}
+
+    {% if sho == "パブロフ流でみんな合格　日商簿記２級　商業簿記　テキスト＆問題集" or kategory == "boki2" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameBoki2" value="2級" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameBoki2" value="2級"></td>
+    {% endif %}
+
+    {% if sho == "徹底攻略 Java SE Bronze 問題集" or kategory == "JAVA" %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameJava" value="Bronze" style="background-color: hotpink;"></td>
+    {% else %}
+    <td><input class="yuruFont" type="submit" id="button" name="nameJava" value="Bronze"></td>
+    {% endif %}
+</tr>
+
+</form>
+<!--5/5最後-->
+
+<tr><th>必須</th>
+
+{% if linuxCount >= 3 %}
+<td style="background-color:lightskyblue">3/3</div>
+{% else %}
+<td>{{ linuxCount }}/3</div>
+{% endif %}
+
+{% if python3Count >= 3 %}
+<td style="background-color:lightskyblue">3/3</td>
+{% else %}
+<td>{{ python3Count }}/3</td>
+{% endif %}
+
+{% if python3dataBunsekiCount >= 3 %}
+<td style="background-color:lightskyblue">3/3</td>
+{% else %}
+<td>{{ python3dataBunsekiCount }}/3</td>
+{% endif %}
+
+{% if python3JissenCount >= 3 %}
+<td style="background-color:lightskyblue">3/3</td>
+{% else %}
+<td>{{ python3JissenCount }}/3</td>
+{% endif %}
+
+{% if accessVBACount >= 3 %}
+<td style="background-color:lightskyblue">3/3</td>
+{% else %}
+<td>{{ accessVBACount }}/3</td>
+{% endif %}
+
+
+
+{% if sqlCount >= 3 %}
+<td style="background-color:lightskyblue">3/3</td>
+{% else %}
+<td>{{ sqlCount }}/3</td>
+{% endif %}
+
+
+
+{% if databaseSpecialistCount >= 3 %}
+<td style="background-color:lightskyblue"> 3/3</td>
+{% else %}
+<td>{{ databaseSpecialistCount }}/3</td>
+{% endif %}
+
+{% if toukeikenteiCount >= 1 %}
+<td style="background-color:lightskyblue">1/1</td>
+{% else %}
+<td>{{ toukeikenteiCount }}/1</td>
+{% endif %}
+
+{% if dataScientistCount >= 3 %}
+<td style="background-color:lightskyblue">3/3</td>
+{% else %}
+<td>{{ dataScientistCount }}/3</td>
+{% endif %}
+
+{% if kihonjouhouCount >= 3 %}
+<td style="background-color:lightskyblue">3/3</td>
+{% else %}
+<td>{{ kihonjouhouCount }}/3</td>
+{% endif %}
+
+{% if ouyoujouhouCount >= 3 %}
+<td style="background-color:lightskyblue">3/3</td>
+{% else %}
+<td>{{ ouyoujouhouCount }}/3</td>
+{% endif %}
+
+{% if gkenteiCount >= 3 %}
+<td style="background-color:lightskyblue">3/3</td>
+{% else %}
+<td>{{ gkenteiCount }}/3</td>
+{% endif %}
+{% if eShikakuCount >= 1 %}
+<td style="background-color:lightskyblue">1/1</td>
+{% else %}
+<td>{{ eShikakuCount }}/1</td>
+{% endif %}
+
+{% if boki2Count >= 1 %}
+<td style="background-color:lightskyblue">1/1</td>
+{% else %}
+<td>{{ boki2Count }}/1</td>
+{% endif %}
+
+
+{% if javaCount >= 1 %}
+<td style="background-color:lightskyblue">1/1</td>
+{% else %}
+<td>{{ javaCount }}/1</td>
+{% endif %}
+
+
+
+
+</tr>
+<tr><th>+α</th>
+{% load mathfilters %}
+
+{% if linuxCount >= 5 %}
+<td style="background-color:paleturquoise">{{ linuxCount|sub:3 }}/2</td>
+{% elif linuxCount >= 3 %}
+<td>{{ linuxCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if python3Count >= 5 %}
+<td style="background-color:paleturquoise">{{ python3Count|sub:3 }}/2</td>
+{% elif python3Count >= 3 %}
+<td>{{ python3Count|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if python3dataBunsekiCount >= 5 %}
+<td style="background-color:paleturquoise">{{ python3dataBunsekiCount|sub:3 }}/2</td>
+{% elif python3dataBunsekiCount >= 3 %}
+<td>{{ python3dataBunsekiCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if python3JissenCount >= 5 %}
+<td style="background-color:paleturquoise">{{ python3JissenCount|sub:3 }}/2</td>
+{% elif python3JissenCount >= 3 %}
+<td>{{ python3JissenCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if accessVBACount >= 5 %}
+<td style="background-color:paleturquoise">{{ accessVBACount|sub:3 }}/2</td>
+{% elif accessVBACount >= 3 %}
+<td>{{ accessVBACount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+
+
+
+{% if sqlCount >= 5 %}
+<td style="background-color:paleturquoise">{{ sqlCount|sub:3 }}/2</td>
+{% elif sqlCount >= 3 %}
+<td>{{ sqlCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+
+
+{% if databaseSpecialistCount >= 5 %}
+<td style="background-color:paleturquoise">{{ databaseSpecialistCount|sub:3 }}/2</td>
+{% elif databaseSpecialistCount >= 3 %}
+<td>{{ databaseSpecialistCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if toukeikenteiCount >= 2 %}
+<td style="background-color:paleturquoise">{{ toukeikenteiCount|sub:3 }}/1</td>
+{% elif toukeikenteiCount >= 1 %}
+<td>{{ toukeikenteiCount|sub:1 }}/1</td>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+{% if dataScientistCount >= 5 %}
+<td style="background-color:paleturquoise">{{ dataScientistCount|sub:3 }}/2</td>
+{% elif dataScientistCount >= 3 %}
+<td>{{ dataScientistCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if kihonjouhouCount >= 5 %}
+<td style="background-color:paleturquoise">{{ kihonjouhouCount|sub:3 }}/2</td>
+{% elif kihonjouhouCount >= 3 %}
+<td>{{ kihonjouhouCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if ouyoujouhouCount >= 5 %}
+<td style="background-color:paleturquoise">{{ ouyoujouhouCount|sub:3 }}/2</td>
+{% elif ouyoujouhouCount >= 3 %}
+<td>{{ ouyoujouhouCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if gkenteiCount >= 5 %}
+<td style="background-color:paleturquoise">{{ gkenteiCount|sub:3 }}/2</td>
+{% elif gkenteiCount >= 3 %}
+<td>{{ gkenteiCount|sub:3 }}/2</td>
+{% else %}
+<td>0/2</td>
+{% endif %}
+
+{% if eShikakuCount >= 2 %}
+<td style="background-color:paleturquoise">{{ eShikakuCount|sub:3 }}/1</td>
+{% elif eShikakuCount >= 1 %}
+<td>{{ eShikakuCount|sub:1 }}/1</td>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+{% if boki2Count >= 2 %}
+<td style="background-color:paleturquoise">{{ boki2Count|sub:3 }}/1</td>
+{% elif boki2Count >= 1 %}
+<td>{{ boki2Count|sub:1 }}/1</td>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+{% if javaCount >= 2 %}
+<td style="background-color:paleturquoise">{{ javaCount|sub:3 }}/1</td>
+{% elif javaCount >= 1 %}
+<td>{{ javaCount|sub:1 }}/1</td>
+{% else %}
+<td>0/1</td>
+{% endif %}
+
+</tr>
+</table>
+
+<!--ルーティン最後-->
+
+{% if fromList == "ari" %}
+
+<!--5/4-->
+<table border="1" style="border-color:lightgrey; font-size:12px;">
+<tr></tr>
+<th><span>前回データ　</span></th>
+<td>
+<span>【{{ sho|truncatechars:22 }}】　</span>
+<span>{{ que|truncatechars:22 }}　</span>
+<span>{{ cate }}　</span>
+<span>({{ sho_page }})　</span></h8>
+<a href="../{{ idid }}/detail/">詳細</a>
+</td>
+</tr>
+</table>
+
+{% elif fromList == "nashi" %}
+
+<form action="{% url 'create-question' %}" method="get" enctype="multipart/form-data" class="flexFirstButton">
+    {% csrf_token %}
+    <div class="flexFirst">
+    <table>
+    {% if dataFirst1 %}
+        <tr>
+    <td class="flexFirst" style="border: solid; border-color: lightgrey;">
+    <!--<h2 class="text-success"></h2>-->
+    <label for="touroku1tsume">
+    
+        {% if dataFirst2 == "" and dataFirst3 == "" %}
+        <input type="radio" id="touroku1tsume" name="nameTouroku" value="sono1" class="radio-plain" required checked>
+        {% else %}
+        <input type="radio" id="touroku1tsume" name="nameTouroku" value="sono1" class="radio-plain" required>
+        {% endif %}
+
+
+    <span class="flexFirstKoko" style="font-weight: bold;">【{{ dataFirst1_shoseki|truncatechars:30 }}】　</span>
+    <span class="flexFirstKoko">{{ dataFirst1|truncatechars:30 }}　　</span>
+        {% if dataFirst1_shoseki == 'Access VBA スタンダード' or dataFirst1_shoseki == 'Excel VBA スタンダード' %}
+            <a href="https://www.exam-vba.com/" target="_blank" style="text-decoration: none;">HP　　</a>
+        {% endif %}
+        {% if dataFirst1_page and dataFirst1_page != "" %}
+        <span class="flexFirstKoko">({{ dataFirst1_page|truncatechars:5 }})　　</span>
+        {% endif %}
+    </label>
+    
+    <input type="hidden" id="idFirst1" name="nameFirst1" value="{{ dataFirst1.pk }}">
+    <input type="hidden" id="idFirst1" name="nameFirst1Shoseki" value="{{ dataFirst1.shoseki }}">
+    <input type="hidden" id="idFirst1" name="nameFirst1Shoseki_page" value="{{ dataFirst1.shoseki_page }}">
+    <input type="hidden" id="idFirst1" name="nameFirst1Category" value="{{ dataFirst1.category }}">
+    <input type="hidden" id="idFirst1" name="nameFirst1Question" value="{{ dataFirst1.question }}">
+
+    <a href="../{{ dataFirst1.pk }}/detail/">詳細</a>
+    
+    
+    <!--<span class="flexFirstKoko"><input type="submit" id="idFirst1" name="buttonFirst1" value="登録" class="flexFirstButton"></span>-->
+    
+    </td>
+    </tr>
+
+    <!--5/23-->
+    {% endif %}
+
+    {% if dataFirst2 and dataFirst2 != dataFirst %}
+    <tr>
+    <td class="flexFirst" style="border: solid; border-color: lightgrey;">
+    <!--<h2 class="text-success"></h2>-->
+    <label for="touroku2tsume">
+    
+        {% if dataFirst1 == "" and dataFirst3 == "" %}
+        <input type="radio" id="touroku2tsume" name="nameTouroku" value="sono2" class="radio-plain" required checked>
+        {% else %}
+        <input type="radio" id="touroku2tsume" name="nameTouroku" value="sono2" class="radio-plain" required>
+        {% endif %}
+    <span class="flexFirstKoko" style="font-weight: bold;">【{{ dataFirst2_shoseki|truncatechars:30 }}】　</span>
+    <span class="flexFirstKoko">{{ dataFirst2|truncatechars:30 }}　　</span>
+        {% if dataFirst2_shoseki == 'Access VBA スタンダード' or dataFirst2_shoseki == 'Excel VBA スタンダード' %}
+            <a href="https://www.exam-vba.com/" target="_blank" style="text-decoration: none;">HP　　</a>
+        {% endif %}
+        {% if dataFirst2_page and dataFirst2_page != "" %}
+        <div class="flexFirstKoko"><h3>({{ dataFirst2_page|truncatechars:5 }})　　</h3></div>
+        {% endif %}
+    </label>
+    
+    <input type="hidden" id="idFirst2" name="nameFirst2" value="{{ dataFirst2.pk }}">
+    <input type="hidden" id="idFirst2" name="nameFirst2Shoseki" value="{{ dataFirst2.shoseki }}">
+    <input type="hidden" id="idFirst2" name="nameFirst2Shoseki_page" value="{{ dataFirst2.shoseki_page }}">
+    <input type="hidden" id="idFirst2" name="nameFirst2Category" value="{{ dataFirst2.category }}">
+    <input type="hidden" id="idFirst2" name="nameFirst2Question" value="{{ dataFirst2.question }}">
+
+    <a href="../{{ dataFirst2.pk }}/detail/">詳細</a>
+    
+    <!--<span class="flexFirstKoko"><input type="submit" id="idFirst2" name="buttonFirst2" value="登録" class="flexFirstButton"></span>-->
+    
+    </td>
+    </tr>
+    {% endif %}
+    
+    {% if dataFirst3 and dataFirst3 != dataFirst %}
+    <tr>
+    <td class="flexFirst" style="border: solid; border-color: lightgrey;">
+    <!--<h2 class="text-success"></h2>-->
+    <label for="touroku3tsume">
+    
+        {% if dataFirst1 == "" and dataFirst2 == "" %}
+        <input type="radio" id="touroku3tsume" name="nameTouroku" value="sono3" class="radio-plain" required checked>
+        {% else %}
+        <input type="radio" id="touroku3tsume" name="nameTouroku" value="sono3" class="radio-plain" required>
+        {% endif %}
+    <span class="flexFirstKoko" style="font-weight: bold;">【{{ dataFirst3_shoseki|truncatechars:30 }}】　</span>
+    <span class="flexFirstKoko">{{ dataFirst3|truncatechars:30 }}　　</span>
+        {% if dataFirst3_shoseki == 'Access VBA スタンダード' or dataFirst3_shoseki == 'Excel VBA スタンダード' %}
+            <a href="https://www.exam-vba.com/" target="_blank" style="text-decoration: none;">HP　　</a>
+        {% endif %}
+        {% if dataFirst3_page and dataFirst3_page != "" %}
+            <span class="flexFirstKoko">({{ dataFirst3_page|truncatechars:5 }})　　</span>
+        {% endif %}
+    </label>
+    <input type="hidden" id="idFirst3" name="nameFirst3" value="{{ dataFirst3.pk }}">
+    <input type="hidden" id="idFirst3" name="nameFirst3Shoseki" value="{{ dataFirst3.shoseki }}">
+    <input type="hidden" id="idFirst3" name="nameFirst3Shoseki_page" value="{{ dataFirst3.shoseki_page }}">
+    <input type="hidden" id="idFirst3" name="nameFirst3Category" value="{{ dataFirst3.category }}">
+    <input type="hidden" id="idFirst3" name="nameFirst3Question" value="{{ dataFirst3.question }}">
+
+    <a href="../{{ dataFirst3.pk }}/detail/">詳細</a>
+    
+    <!--<span class="flexFirstKoko"><input type="submit"id="idFirst3" name="buttonFirst3" value="登録" class="flexFirstButton"></span>-->
+    
+    </td>
+    </tr>
+    {% endif %}
+    </table>
+    
+    {% if dataFirst1 == "" and dataFirst2 == "" and dataFirst3 == "" %}  
+        <span class="flexFirstKoko"><input type="hidden" id="idFirst" name="buttonFirst2" value="登録"></span>
+    {% else %}
+        <span class="flexFirstKoko"><input type="submit" id="idFirst" name="buttonFirst2" value="登録" class="flexFirstButton"></span>
+    {% endif %}
+    </div>
+    </form>
+    
+
+{% else %}
+<!--5/23-->
+<table border="1" style="border-color:lightgrey; font-size:12px;">
+    <tr></tr>
+    <th><span>前回データ　</span></th>
+    <td>
+    <span>【{{ touroku1tsumaeAnswer|truncatechars:22 }}】　</span>
+    <span>{{ touroku1tsumaeQuestion|truncatechars:22 }}　</span>
+    <span>{{ touroku1tsumaeCategory }}　</span>
+    <span>({{ touroku1tsumaePage }})　</span></h8>
+    <a href="../{{ touroku1tsumaeId }}/detail/">詳細</a>
+    </td>
+    </tr>
+    </table>
+
+
+{% endif %}
+
+
+
+
+<br />
+
+<!--5/4最後-->
+
+<!--5/5 listから追加-->
+
+
+<!--5/5 最後-->
+
+
+<!--<input id="text" type="text" value="" />-->
+<input type="button" value="2/ABCDを選ぶ" onclick="twoOfFour()" />
+<!--<input type="button" value="正解とご回答1-3の行高を上げる" onclick="line4Hight()" />-->
+
+<!--<div id="id_wronganswer1"></div>-->
+
+
+
+
+    <form method="POST" enctype="multipart/form-data" class="yokonarabi">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        
+
+    <input type="submit" onclick="shocateFunc()" name="nameSakusei" value="作成する">
+    </form>
+
+    
+    
+<script>
+        /*
+        let shocateFunc = function(){
+            let input_shoseki = document.querySelector('[name="shoseki"]'); //入力された名前
+            let input_category = document.querySelector('[name="category"]'); //入力された年齢
+
+            document.getElementById('input_shoseki').textContent = input_shoseki.value;
+            document.getElementById('input_category').textContent = input_category.value;
+
+            
+        }
+        */
+         let select_mondai = document.querySelector('[name="question"]');
+         select_mondai.value = "";
+        
+        
+         var dataWatashi = "{{ dataWatashi }}";
+     
+        if (dataWatashi == "watashi1"){
+             var data_of_django_shoseki1 = "{{ first1Shoseki }}";
+             let select_shoseki1 = document.querySelector('[name="shoseki"]');
+             select_shoseki1.value = data_of_django_shoseki1;
+             /*select_shoseki1.textContent = data_of_django_shoseki1;*/
+             var data_of_django_category1 = "{{ first1Category }}";
+             let select_category1 = document.querySelector('[name="category"]');
+             select_category1.value = data_of_django_category1;
+         } else if (dataWatashi == "watashi2"){
+             var data_of_django_shoseki2 = "{{ first2Shoseki }}";
+             let select_shoseki2 = document.querySelector('[name="shoseki"]');
+             select_shoseki2.value = data_of_django_shoseki2;
+             var data_of_django_category2 = "{{ first2Category }}";
+             let select_category2 = document.querySelector('[name="category"]');
+             select_category2.value = data_of_django_category2;
+         } else if (dataWatashi == "watashi3"){
+             var data_of_django_shoseki3 = "{{ first3Shoseki }}";
+             let select_shoseki3 = document.querySelector('[name="shoseki"]');
+             select_shoseki3.value = data_of_django_shoseki3;
+             var data_of_django_category3 = "{{ first3Category }}";
+             let select_category3 = document.querySelector('[name="category"]');
+             select_category3.value = data_of_django_category3;
+         } else if ("{{ kuuhaku }}" == "kuuhaku"){
+             var data_of_django_shosekiKuuhaku = "";
+             let select_shosekiKuuhaku = document.querySelector('[name="shoseki"]');
+             select_shosekiKuuhaku.value = data_of_django_shosekiKuuhaku;
+             var data_of_django_categoryKuuhaku = "";
+             let select_categoryKuuhaku = document.querySelector('[name="category"]');
+             select_categoryKuuhaku.value = data_of_django_categoryKuuhaku;
+         } else {
+             var data_of_django_shosekiTourokugo = "{{ touroku1tsumaeShoseki }}";
+             let select_shosekiTourokugo = document.querySelector('[name="shoseki"]');
+             select_shosekiTourokugo.value = data_of_django_shosekiTourokugo;
+             var data_of_django_categoryTourokugo = "{{ touroku1tsumaeCategory }}";
+             let select_categoryTourokugo = document.querySelector('[name="category"]');
+             select_categoryTourokugo.value = data_of_django_categoryTourokugo;
+         };;
+        
+    
+
+         context['kuuhaku'] = "kuuhaku"
+     
+     
+</script>
+<script src="{% static 'book/js/createQuestion.js' %}"></script>
+<script src="{% static 'book/js/changeQuestion.js' %}"></script>
+<script>
+    let gken = 'G検定'
+    let gkenCate = document.getElementById("id_category");
+    let gkenShose = document.getElementById("id_shoseki");
+    if(gkenCate == gken){
+        gkenShose.value = "ディープラーニングG検定ジェネラリスト要点整理テキスト&問題集";
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends 'baseQuestion.html' %}
+
+{% block title %}解答結果{% endblock %}
+
+{% block content %}
+<div class="nav-item">
+{% if object_list|length <= 4 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+{% elif object_list|length <= 10 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    {% elif object_list|length <= 20 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+{% else %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+    <a href="{% url 'questionRandom30' %}" class="choice30">30択問題</a>
+{% endif %}
+<a class="toQichiran" href="{% url 'list-question' %}">Workbook一覧へ</a>
+<a class="toQichiran" href="{% url 'create-question' %}">Workbook登録へ</a>
+<a class="toQichiran" href="{% url 'test-question' %}">TEST</a>
+</div>
+<br />
+<br />
+<div class="kekka"><label><h2>テスト結果　　　　　<span class="seikai">{{ test10mondaisuu }}問中　{{ test10seikai }}問正解　正解率　{{ seikairitsu }}%</span></h2></label></div>
+<br />
+
+{% comment %}
+<div>pandas  {{ df }}</div>
+<div>pandas LIST　{{ dfHtml | safe }}</div>
+{% endcomment %}
+
+<div class="font_size12"><!--文字の大きさ-->
+
+    <table class="tableTestResult">
+        {% if testSelectAns2 == testAnswer1 %}
+        <tr><td class="tableTestResultTd" style="background-color:lightblue !important;"><div><p><label><span class="testMonme">【1問目】</span><span class="testQ">{{ testQuestion1|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns2 }}</span><span class="testQ">　【正解】{{ testAnswer1 }}</span><a href="../../{{ testId1 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% else %}
+        <tr><td class="tableTestResultTd" style="background-color:plum !important;"><div><p><label><span class="testMonme">【1問目】</span><span class="testQ">{{ testQuestion1|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns2 }}</span><span class="testQ">　【正解】{{ testAnswer1 }}</span><a href="../../{{ testId1 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% endif %}
+        
+        {% if testSelectAns3 == testAnswer2 %}
+        <tr><td class="tableTestResultTd" style="background-color:lightblue !important;"><div><p><label><span class="testMonme">【2問目】</span><span class="testQ">{{ testQuestion2|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns3 }}</span><span class="testQ">　【正解】{{ testAnswer2 }}</span><a href="../../{{ testId2 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% else %}
+        <tr><td class="tableTestResultTd" style="background-color:plum !important;"><div><p><label><span class="testMonme">【2問目】</span><span class="testQ">{{ testQuestion2|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns3 }}</span><span class="testQ">　【正解】{{ testAnswer2 }}</span><a href="../../{{ testId2 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% endif %}
+
+        {% if testSelectAns4 == testAnswer3 %}
+        <tr><td class="tableTestResultTd" style="background-color:lightblue !important;"><div><p><label><span class="testMonme">【3問目】</span><span class="testQ">{{ testQuestion3|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns4 }}</span><span class="testQ">　【正解】{{ testAnswer3 }}</span><a href="../../{{ testId3 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% else %}
+        <tr><td class="tableTestResultTd" style="background-color:plum !important;"><div><p><label><span class="testMonme">【3問目】</span><span class="testQ">{{ testQuestion3|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns4 }}</span><span class="testQ">　【正解】{{ testAnswer3 }}</span><a href="../../{{ testId3 }}/detail">　詳細</a></label></p></div></td></tr>
+        {%  endif %}
+
+        {% if testSelectAns5 == testAnswer4 %}
+        <tr><td class="tableTestResultTd" style="background-color:lightblue !important;"><div><p><label><span class="testMonme">【4問目】</span><span class="testQ">{{ testQuestion4|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns5 }}</span><span class="testQ">　【正解】{{ testAnswer4 }}</span><a href="../../{{ testId4 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% else %}
+        <tr><td class="tableTestResultTd" style="background-color:plum !important;"><div><p><label><span class="testMonme">【4問目】</span><span class="testQ">{{ testQuestion4|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns5 }}</span><span class="testQ">　【正解】{{ testAnswer4 }}</span><a href="../../{{ testId4 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% endif %}
+
+        {% if testSelectAns6 == testAnswer5 %}
+        <tr><td class="tableTestResultTd" style="background-color:lightblue !important;"><div><p><label><span class="testMonme">【5問目】</span><span class="testQ">{{ testQuestion5|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns6 }}</span><span class="testQ">　【正解】{{ testAnswer5 }}</span><a href="../../{{ testId5 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% else %}
+        <tr><td class="tableTestResultTd" style="background-color:plum !important;"><div><p><label><span class="testMonme">【5問目】</span><span class="testQ">{{ testQuestion5|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns6 }}</span><span class="testQ">　【正解】{{ testAnswer5 }}</span><a href="../../{{ testId5 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% endif %}
+
+        {% if testSelectAns7 == testAnswer6 %}
+        <tr><td class="tableTestResultTd" style="background-color:lightblue !important;"><div><p><label><span class="testMonme">【6問目】</span><span class="testQ">{{ testQuestion6|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns7 }}</span><span class="testQ">　【正解】{{ testAnswer6 }}</span><a href="../../{{ testId6 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% else %}
+        <tr><td class="tableTestResultTd" style="background-color:plum !important;"><div><p><label><span class="testMonme">【6問目】</span><span class="testQ">{{ testQuestion6|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns7 }}</span><span class="testQ">　【正解】{{ testAnswer6 }}</span><a href="../../{{ testId6 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% endif %}
+        
+        {% if testSelectAns8 == testAnswer7 %}
+        <tr><td class="tableTestResultTd" style="background-color:lightblue !important;"><div><p><label><span class="testMonme">【7問目】</span><span class="testQ">{{ testQuestion7|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns8 }}</span><span class="testQ">　【正解】{{ testAnswer7 }}</span><a href="../../{{ testId7 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% else %}
+        <tr><td class="tableTestResultTd" style="background-color:plum !important;"><div><p><label><span class="testMonme">【7問目】</span><span class="testQ">{{ testQuestion7|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns8 }}</span><span class="testQ">　【正解】{{ testAnswer7 }}</span><a href="../../{{ testId7 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% endif %}
+        
+        {% if testSelectAns9 == testAnswer8 %}
+        <tr><td class="tableTestResultTd" style="background-color:lightblue !important;"><div><p><label><span class="testMonme">【8問目】</span><span class="testQ">{{ testQuestion8|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns9 }}</span><span class="testQ">　【正解】{{ testAnswer8 }}</span><a href="../../{{ testId8 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% else %}
+        <tr><td class="tableTestResultTd" style="background-color:plum !important;"><div><p><label><span class="testMonme">【8問目】</span><span class="testQ">{{ testQuestion8|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns9 }}</span><span class="testQ">　【正解】{{ testAnswer8 }}</span><a href="../../{{ testId8 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% endif %}
+
+        {% if testSelectAns10 == testAnswer9 %}
+        <tr><td class="tableTestResultTd" style="background-color:lightblue !important;"><div><p><label><span class="testMonme">【9問目】</span><span class="testQ">{{ testQuestion9|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns10 }}</span><span class="testQ">　【正解】{{ testAnswer9 }}</span><a href="../../{{ testId9 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% else %}
+        <tr><td class="tableTestResultTd" style="background-color:plum !important;"><div><p><label><span class="testMonme">【9問目】</span><span class="testQ">{{ testQuestion9|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ testSelectAns10 }}</span><span class="testQ">　【正解】{{ testAnswer9 }}</span><a href="../../{{ testId9 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% endif %}
+        
+        {% if selectedAns == testAnswer10 %}
+        <tr><td class="tableTestResultTd" style="background-color:lightblue !important;"><div><p><label><span class="testMonme">【10問目】</span><span class="testQ">{{ testQuestion10|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ selectedAns }}</span><span class="testQ">　【正解】{{ testAnswer10 }}</span><a href="../../{{ testId10 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% else %}
+        <tr><td class="tableTestResultTd" style="background-color:plum !important;"><div><p><label><span class="testMonme">【10問目】</span><span class="testQ">{{ testQuestion10|linebreaksbr }}</span><span class="testYQ">　【あなたの答え】{{ selectedAns }}</span><span class="testQ">　【正解】{{ testAnswer10 }}</span><a href="../../{{ testId10 }}/detail">　詳細</a></label></p></div></td></tr>
+        {% endif %}
+    </table>
+
+
+      
+
+
+ 
+</div><!--文字の大きさ-->
+
+{% include 'book/components/pagination.html' %}
+{% endblock content %}

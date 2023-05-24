@@ -1,0 +1,103 @@
+{% extends 'baseQuestion.html' %}
+
+
+{% block title %}Workbook TEST{% endblock %}
+
+{% block content %}
+
+<!--タイポグラフィー-->
+<div id="wrapper">
+    <canvas id="particle"></canvas>
+</div>
+
+<div class="nav-item">
+{% if data|length <= 4 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+{% elif data|length <= 10 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    {% elif data|length <= 20 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+{% else %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+    <a href="{% url 'questionRandom30' %}" class="choice30">30択問題</a>
+{% endif %}
+<a class="toQichiran" href="{% url 'create-question' %}">Workbook登録へ</a>
+<a class="toQichiran" href="{% url 'test-question' %}">TEST</a>
+</div>
+
+<!--折りたたみ上--> 
+<div class="wrap">
+    <!-- １つ目 -->
+    <label for="label1" class="label">▼ 検索フォームを表示</label>
+    <input type="checkbox" id="label1" class="switch" />
+
+<!-- ↓↓最初隠したいコンテンツ↓↓ -->
+<div class="content content2">
+<p>
+<!--折りたたみ上--> 
+
+
+<div class="font_size">
+<!--findアプリ-->
+<div class="container flex">
+    <!--  <div style="display:inline-flex"> -->
+
+    <div class="left"><form action="{% url 'list-question' %}" method="post" class="form-inline"></div>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p id="selectanswers"></p>
+
+    <div class="searchBtn right"><input type="submit" value="click" class="btn btn-primary mt-2"></div>
+    </form>
+</div><!--container-->
+<!--findアプリ-->
+</div>
+
+<!--折りたたみおりたたみ下--> 
+</p>
+</div> 
+<!-- ↑↑最初隠したいコンテンツ ↑↑-->
+</div><!--wrap-->
+<!--折りたたみおりたたみ下-->
+
+
+   <h2>Workbook TEST</h2>
+
+    
+    <div class="p-4 m-4 bg-light border border-success rounded">
+        
+    <form action="{% url 'test-question4-10' %}" method="post" enctype="multipart/form-data" class="testStartButton">
+        {% csrf_token %}
+        <input type="hidden" id="test10" name="test10count" value="0">
+        <input type="hidden" id="test10" name="test10seikai" value="0">
+        <input type="hidden" id="test10" name="testShokai" value="testShokai">
+        <input class="yuruFont" type="submit" id="button" name="button" value="4択10問テスト　スタート">
+    </form>
+    <form action="{% url 'test-question10' %}" method="post" enctype="multipart/form-data" class="testStartButton">
+        {% csrf_token %}
+        <input type="hidden" id="test10" name="test10count" value="0">
+        <input type="hidden" id="test10" name="test10seikai" value="0">
+        <input type="hidden" id="test10" name="testShokai" value="testShokai">
+        <input class="yuruFont" type="submit" id="button" name="button" value="30択10問テスト　スタート">
+    </form>
+    <form action="{% url 'test-question50' %}" method="post" enctype="multipart/form-data" class="testStartButton">
+        {% csrf_token %}
+        <input type="hidden" id="test50" name="test50count" value="0">
+        <input type="hidden" id="test50" name="test50seikai" value="0">
+        <input type="hidden" id="test50" name="testShokai" value="testShokai">
+        <input class="yuruFont" type="submit" id="button" name="button" value="50問テスト　スタート">
+    </form>
+    </div>
+
+{% load static %}
+<script src="{% static 'book/js/scriptQuestion.js' %}"></script>
+
+{% include 'book/components/pagination.html' %}
+{% endblock content %}
+
+    

@@ -1,0 +1,81 @@
+/* 入力中に一時的にフォームの高さが大きくなる*/
+
+/* id_question */
+// ▼①フォーカスを得た場合
+function gotfocus() {
+    this.style.height = "10em";             // 高さを10文字分にする
+    this.style.backgroundColor = "#ffe";    // 背景色を薄い黄色にする
+}
+
+function gotfocus2() {
+    this.style.height = "20em";             // 高さを10文字分にする
+    this.style.backgroundColor = "#ffe";    // 背景色を薄い黄色にする
+}
+
+// ▼②フォーカスを失った場合
+function lostfocus() {
+    if( this.value.length == 0 ) {
+        // 文字数がゼロなら
+        this.style.height = "2em";          // 高さを3文字分にする
+    }
+    this.style.backgroundColor = "#fff";    // 背景色を白色にする
+}
+ 
+// ③テキストエリアのイベントに、上記関数を割り当てる
+//document.getElementById("id_title").onfocus = gotfocus;    // フォーカスを得た場合
+//document.getElementById("id_title").onblur = lostfocus;    // フォーカスを失った場合
+
+/* id_answer */
+// ③テキストエリアのイベントに、上記関数を割り当てる
+/*document.getElementById("id_answer").onfocus = gotfocus;    // フォーカスを得た場合
+document.getElementById("id_answer").onblur = lostfocus;    // フォーカスを失った場合*/
+
+/* id_wronganswer1 */
+// ③テキストエリアのイベントに、上記関数を割り当てる
+/*document.getElementById("id_wronganswer1").onfocus = gotfocus;    // フォーカスを得た場合
+document.getElementById("id_wronganswer1").onblur = lostfocus;    // フォーカスを失った場合*/
+
+/* id_wronganswer2 */
+// ③テキストエリアのイベントに、上記関数を割り当てる
+/*document.getElementById("id_wronganswer2").onfocus = gotfocus;    // フォーカスを得た場合
+document.getElementById("id_wronganswer2").onblur = lostfocus;    // フォーカスを失った場合*/
+
+/* id_wronganswer3 */
+// ③テキストエリアのイベントに、上記関数を割り当てる
+/*document.getElementById("id_wronganswer3").onfocus = gotfocus;    // フォーカスを得た場合
+document.getElementById("id_wronganswer3").onblur = lostfocus;    // フォーカスを失った場合*/
+
+/* id_wronganswer4 */
+// ③テキストエリアのイベントに、上記関数を割り当てる
+/*document.getElementById("id_wronganswer4").onfocus = gotfocus;    // フォーカスを得た場合
+document.getElementById("id_wronganswer4").onblur = lostfocus;    // フォーカスを失った場合*/
+
+/* id_wronganswer5 */
+// ③テキストエリアのイベントに、上記関数を割り当てる
+/*document.getElementById("id_wronganswer5").onfocus = gotfocus;    // フォーカスを得た場合
+document.getElementById("id_wronganswer5").onblur = lostfocus;    // フォーカスを失った場合*/
+
+/* id_wronganswer6 */
+// ③テキストエリアのイベントに、上記関数を割り当てる
+/*document.getElementById("id_wronganswer6").onfocus = gotfocus;    // フォーカスを得た場合
+document.getElementById("id_wronganswer6").onblur = lostfocus;    // フォーカスを失った場合*/
+
+/* id_wronganswer7 */
+// ③テキストエリアのイベントに、上記関数を割り当てる
+/*document.getElementById("id_wronganswer7").onfocus = gotfocus;    // フォーカスを得た場合
+document.getElementById("id_wronganswer7").onblur = lostfocus;    // フォーカスを失った場合*/
+
+/* id_wronganswer8 */
+// ③テキストエリアのイベントに、上記関数を割り当てる
+/*document.getElementById("id_wronganswer8").onfocus = gotfocus;    // フォーカスを得た場合
+document.getElementById("id_wronganswer8").onblur = lostfocus;    // フォーカスを失った場合*/
+
+/* id_wronganswer9 */
+// ③テキストエリアのイベントに、上記関数を割り当てる
+/*document.getElementById("id_wronganswer9").onfocus = gotfocus;    // フォーカスを得た場合
+document.getElementById("id_wronganswer9").onblur = lostfocus;    // フォーカスを失った場合*/
+
+/* id_explanation */
+// ③テキストエリアのイベントに、上記関数を割り当てる
+document.getElementById("id_text").onfocus = gotfocus2;    // フォーカスを得た場合
+document.getElementById("id_text").onblur = lostfocus;    // フォーカスを失った場合

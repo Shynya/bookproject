@@ -1,0 +1,16 @@
+.TextRandomAnime span{opacity: 0;}
+.TextRandomAnime.appearRandomtext span{
+    animation:text_randomanime_on 0.5s ease-out forwards;
+}
+/*アニメーションで透過を0から1に変化させる*/
+@keyframes text_randomanime_on{
+    0%{opacity:0;}
+    100%{opacity:1;}
+}
+
+.TextRandomAnime.appearRandomtext span:nth-child(2n){
+    animation-delay: 2.5s;/* spanの付いた2の倍数の文字列の変化を0.5秒遅らせる*/
+}
+.TextRandomAnime.appearRandomtext span:nth-child(3n+1){
+    animation-delay: 2.15s;/* spanの付いた3の倍数+1の文字列の変化を0.15秒遅らせる*/
+}

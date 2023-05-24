@@ -1,0 +1,17 @@
+{% extends 'basePortfolio.html' %}
+
+{% block title %}Portfolio削除{% endblock %}
+{% block h1 %}Portfolio削除{% endblock %}
+{% block content %}
+
+<div class=""nav-item>
+    <a class="toQichiran" href="{% url 'list-portfolio' %}">Portfolio一覧へ</a>
+</div>
+    
+<br />
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">{{ object.title }}を削除する</button>
+    </form>
+{% endblock %}

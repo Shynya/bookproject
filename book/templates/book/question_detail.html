@@ -1,0 +1,43 @@
+{% extends 'baseQuestion.html' %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+<h2>Workbook詳細</h2>
+
+<div class="nav-item">
+{% if data|length <= 4 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+{% elif data|length <= 10 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    {% elif data|length <= 20 %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+{% else %}
+    <a href="{% url 'questionRandom' %}" class="choice4">４択問題</a>
+    <a href="{% url 'questionRandom10' %}" class="choice10">10択問題</a>
+    <a href="{% url 'questionRandom20' %}" class="choice20">20択問題</a>
+    <a href="{% url 'questionRandom30' %}" class="choice30">30択問題</a>
+{% endif %}
+<a class="toQichiran" href="{% url 'list-question' %}">Workbook一覧へ</a>
+<a class="toQichiran" href="{% url 'create-question' %}">Workbook登録へ</a>
+</div>
+
+<br />
+    <div class="p-4 m-4 bg-light border border-success rounded">
+        <h2 class="text-success detailMondaiColor">【問題】　{{ object.question|linebreaksbr }}</h2>
+        <h2 class="text-success detailKotaeColor">【答え】　{{ object.answer }}</h2>
+        <h2 class="text-success detailThumbnailColor">{{ object.thumbnail }}</h2>
+        <h2 class="text-success detailKaisetsuColor">【解説】　{{ object.explanation|linebreaksbr }}</h2>
+        <h2 class="text-success detailKategoriColor">【カテゴリ】　{{ object.category }}</h2>
+        <h2 class="text-success detailShosekiColor">【書籍】　{{ object.shoseki }}</h2>
+        <h2 class="text-success detailShosekiPageColor">【書籍ページ】　{{ object.shoseki_page }}</h2>
+
+        <!--<a href="{% url 'list-question' %}" class="btn btn-primary">一覧へ</a>-->
+        <a href="{% url 'update-question' object.pk %}" class="btn btn-primary">編集する</a>
+        <a href="{% url 'delete-question' object.pk %}" class="btn btn-primary">削除する</a>
+        <h6 class="card-title"></h6>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'basePortfolio.html' %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+<div class=""nav-item>
+    <a class="toQichiran" href="{% url 'list-portfolio' %}">Portfolio一覧へ</a>
+</div>
+    
+<br />
+    
+
+    <div class="p-4 m-4 bg-light border border-success rounded">
+        <h2 class="text-success detailTaitoruColor">【タイトル】　{{ object.title }}</h2>
+        <h2 class="text-success detailNaiyouColor">【内容】　{{ object.text }}</h2>
+        <h2 class="text-success detailThumbnail1Color">{{ object.thumbnail1 }}</h2>
+        <h2 class="text-success detailThumbnail2Color">{{ object.thumbnail2 }}</h2>
+        <h2 class="text-success detailThumbnail3Color">{{ object.thumbnail3 }}</h2>
+        <h2 class="text-success detailThumbnail4Color">{{ object.thumbnail4 }}</h2>
+        <h2 class="text-success detailThumbnail5Color">{{ object.thumbnail5 }}</h2>
+        <h2 class="text-success detailKategoriColor">【カテゴリ】　{{ object.category }}</h2>
+
+        
+        <a href="{% url 'update-portfolio' object.pk %}" class="btn btn-primary">編集する</a>
+        <a href="{% url 'delete-portfolio' object.pk %}" class="btn btn-primary">削除する</a>
+        <h6 class="card-title"></h6>
+    </div>
+{% endblock %}

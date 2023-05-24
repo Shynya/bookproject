@@ -1,0 +1,17 @@
+{% extends 'basePicturecomment.html' %}
+
+{% block title %}写真コメント登録{% endblock %}
+
+{% block content %}
+<div class=""nav-item>
+    <a class="toQichiran" href="{% url 'list-picturecomment' %}">写真コメント一覧へ</a>
+</div>
+    
+<br />
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="作成する">
+    </form>
+{% endblock %}

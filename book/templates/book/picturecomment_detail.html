@@ -1,0 +1,21 @@
+{% extends 'basePicturecomment.html' %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+<!--<h2>写真コメント詳細</h2>-->
+
+<div class=""nav-item>
+    <a class="toQichiran" href="{% url 'list-picturecomment' %}">写真コメント一覧へ</a>
+</div>
+    
+<br />
+    <div class="p-4 m-4 bg-light border border-success rounded">
+        <h2 class="text-success detailThumbnailColor">{{ object.thumbnail }}</h2>
+        <h2 class="text-success detailTaitoruColor">{{ object.title }}</h2>
+        
+        <a href="{% url 'update-picturecomment' object.pk %}" class="btn btn-primary">編集する</a>
+        <a href="{% url 'delete-picturecomment' object.pk %}" class="btn btn-primary">削除する</a>
+        <h6 class="card-title"></h6>
+    </div>
+{% endblock %}

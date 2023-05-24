@@ -1,0 +1,344 @@
+/*
+a{
+    text-decoration: none;
+}
+*/
+body {
+    font-family: 'Hannotate SC','HanziPen SC','Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic' !important;
+}
+
+.navbar{
+    /*background-color: olivedrab !important;*/
+    background-color:white !important;
+    border: 2px dotted grey !important;
+    /*border-style: hidden double dashed;*/
+} 
+.navbar-nav a{
+    color:darkslateblue !important;
+}
+.nav-one{
+    border-right: solid;
+    border-color: grey;
+}
+/*.nav-one2{
+    border-left: solid;
+    border-color: grey;
+}*/
+label[for="id_title"],label[for="id_text"],label[for="id_category"]{
+    color:darkblue;
+    font-size: 12px !important;
+    font-weight: bold;
+    vertical-align: middle; 
+}
+#id_title, #id_text, #id_category{
+    border-color:darkblue;
+    vertical-align: middle; 
+}
+label[for="id_thumbnail"]{
+    font-size: 12px !important;
+    font-weight: bold;
+    vertical-align: middle;
+}
+#id_thumbnail{
+    font-size: 12px !important;
+}
+.font_size{
+    font-size: 16px !important;
+    vertical-align: middle !important;
+}
+label[for="id_find1"],label[for="id_find2"]{
+    font-size: 16px !important;
+}
+
+.choice4{
+    color:darkmagenta !important;
+}
+.choice10{
+    color:deeppink !important;
+}
+.choice20{
+    color:maroon !important;    
+}
+.choice30{
+    color:darkcyan !important;    
+}
+body{
+    background:url("/media/resource/topHaikei.jpg");
+    /*background-size:contain; */
+    background-color:rgba(249, 235, 235, 0.8);
+    background-blend-mode: lighten;
+}
+.bg-light {
+    --bs-bg-opacity: 0 !important;
+}
+.p-4 {
+    padding: 0.6rem !important;
+    /*border-color:olivedrab !important;*/
+    border: none !important;
+}
+.p-4 h3{
+    margin-bottom: 0.2rem !important;
+}
+.mt-3 {
+    margin-top: 0.2rem !important;
+}
+.h3, h3 {
+    font-size: calc(1rem + .4vw);
+}
+.m-4 {
+    margin: 0.6rem !important;
+}
+.mt-3 a{
+    color:darkslateblue !important;
+}
+.mt-2 {
+    margin-top: 0rem!important;
+}
+
+  .nav-item a {
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-decoration: none;
+    /* アニメーション速度を指定 */
+    transition: color 0.3s ease-out;
+  }
+  .nav-item a:hover {
+    /* hover後に色を変化させる指定 */
+    color:black !important;
+  }
+  /*.navbar-dark{
+    height:56px !important;
+  }*/
+
+  .to-shousai a {
+    color:darkcyan !important;
+  }
+
+
+  .wrap {
+    margin: 2em 0;
+    padding: 0;
+  }
+  
+  .wrap .label1 {
+    display: block;
+    padding : 8px;
+    color: #fff;
+    font-weight: bold;
+    background: #999;
+    cursor: pointer;
+  }
+
+  
+  .wrap input[type="checkbox"] {
+    display: none;
+  }
+  
+  .wrap .content {
+    height: 0;
+    padding: 2px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .switch:checked + .content {
+    height: auto;
+    padding: 8px;
+    background: #f7f7f7;
+  }
+  
+  .kekka label {
+    display: block;
+    padding : 8px;
+    color: #fff;
+    font-weight: bold;
+    background: #999;
+    /*cursor: pointer;*/
+  }
+  .form-control1, .form-control2{
+    width: 170px !important;
+    height: 32px !important;
+    vertical-align: middle !important;
+  }
+  
+  #id_answers{
+    /*border:1px;*/
+    /*font-size: 50% !important;*/
+    width: 210px;
+    height: 32px !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+  }
+  /*検索ボタン*/
+  .btn-primary {
+    color: #fff;
+    background-color:darkslateblue !important;
+    border-color: darkslateblue !important;
+}
+a {
+    color: darkslateblue !important;
+}
+.btn-primary {
+    color: white !important;
+}
+.text-success{
+    color: black !important;
+}
+    
+@media screen and (min-width: 992px) {
+.mt-2{
+    text-align: right !important;
+    margin-left: 20px !important;
+    position:relative !important;
+    top: 0px !important;
+    }
+}
+@media screen and (max-width: 992px) {
+    .mt-2{
+        text-align: right !important;
+        margin-left: 20px !important;
+        position:relative !important;
+        top: 24px !important;
+        }
+    }
+.flex{
+    display: flex !important;
+}
+.flex p{
+    margin-right: 10px !important;
+    margin-left: 2px !important;
+}
+.switch:checked + .content {
+    padding: 10px !important;
+}
+
+@media screen and (max-width: 570px) {
+    .navbar a{
+        font-size: 12px !important;
+    }
+    
+}
+    
+@media screen and (min-width: 570px) {
+    .navbar a{
+        font-size: 0.9rem !important;
+    }
+}
+
+.radio-plain{
+    top: 4px !important;
+    position: relative !important;
+}
+.seikai{
+    color:blue !important;
+}
+.fuseikai{
+    color:red !important;
+}
+
+/*
+.ProductTable {
+    border: solid 1px #000000;
+    border-collapse: separate;
+    border-spacing: 0px 8px;
+}
+
+.ProductTable td {
+    border: solid 1px #000000;
+    border: solid 1px #007275;
+}
+*/
+
+.rotateX{
+    animation-name:rotateXAnime;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+}
+@keyframes rotateXAnime{
+    from{
+        transform: rotate(0);
+    }
+    to{
+        transform: rotateX(-360deg);
+    }
+}
+
+.mondai{
+    font-size:calc(1.275rem + .3vw) !important;
+}
+
+@media screen and (max-width: 775px) {
+
+    
+}
+
+label[for="label1"],label[for="label2"]{
+    color:gray !important;
+}
+
+/* radiobuttonとラベルをセットに*/
+/*
+.content label {
+	display: block;
+	background-color: #ffc;
+	margin: 10px;
+	padding: 10px;
+	text-align: left;
+}
+.content label:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+.content label input { float: left; }
+.content label p {
+	float: left;
+	padding-top: 2px;
+	width: calc(20% - 24px);
+}
+*/
+/**/
+
+
+.h2, h2 {
+    font-size: 12pt !important;
+}
+.m-4{
+    background-color: rgb(234,234,234) !important;
+}
+
+.flex{
+    display:flex;
+}
+.left{
+    margin-right: 10%;
+}
+.right{
+    margin-top: 3%;
+    margin-bottom: 2%;
+}
+
+.chouseiImg{
+    /*vertical-align: bottom !important;*/
+    /*align-items: center !important;*/
+    align-items: center;
+}
+
+.wrap {
+    margin: 1em 0 !important;
+}
+
+a{
+    text-decoration: none !important
+  }
+  .detailTaitoruColor{
+    color: darkslateblue !important;
+  }
+  .detailThumbnailColor{
+    color: grey !important;
+  }
+  form p{
+    margin: 0.5rem !important;
+}
